@@ -210,7 +210,7 @@ Test.prototype = {
 
 			// `b` initialized at top of scope
 			b = document.createElement( "strong" );
-			b.innerHTML = this.name + " <b class='counts'>(<b class='failed'>" + bad + "</b>, <b class='passed'>" + good + "</b>, " + this.assertions.length + ")</b>";
+			WinJS.Utilities.setInnerHTMLUnsafe(b, this.name + " <b class='counts'>(<b class='failed'>" + bad + "</b>, <b class='passed'>" + good + "</b>, " + this.assertions.length + ")</b>");
 
 			addEvent(b, "click", function() {
 				var next = b.nextSibling.nextSibling,
@@ -653,7 +653,7 @@ extend( QUnit, {
 			result.id = "qunit-testresult";
 			result.className = "result";
 			tests.parentNode.insertBefore( result, tests );
-			result.innerHTML = "Running...<br/>&nbsp;";
+			WinJS.Utilities.setInnerHTMLUnsafe(result, "Running...<br/>&nbsp;");
 		}
 	},
 
@@ -878,7 +878,7 @@ QUnit.load = function() {
 	// `banner` initialized at top of scope
 	banner = id( "qunit-header" );
 	if ( banner ) {
-		banner.innerHTML = "<a href='" + QUnit.url({ filter: undefined }) + "'>" + banner.innerHTML + "</a> " + urlConfigHtml;
+		WinJS.Utilities.setInnerHTMLUnsafe(banner, innerHTML = "<a href='" + QUnit.url({ filter: undefined }) + "'>" + banner.innerHTML + "</a> " + urlConfigHtml);
 		addEvent( banner, "change", function( event ) {
 			var params = {};
 			params[ event.target.name ] = event.target.checked ? true : undefined;
